@@ -96,8 +96,8 @@ def get_response(user_message, channel, events_dict): #function to select approp
                 time = event_data_list[3]
                 colons = 0
 
-                for k in range(len(time)):
-                    if time[k] == ':':
+                for n in range(len(time)):
+                    if time[n] == ':':
                         colons += 1
 
                 if colons == 1 and len(event_data_list[2]) == 11 and len(event_data_list[3]) == 6:
@@ -106,8 +106,15 @@ def get_response(user_message, channel, events_dict): #function to select approp
                             utc_datetime = datetime.now()
                             vancouver_datetime = utc_datetime - timedelta(hours=8)
                             vancouver_datetime = vancouver_datetime.replace(second=0,microsecond=0)
-                            mod_vancouver_datetime = vancouver_datetime + timedelta(minutes=30)
 
+                            if event_data_list[5] == '30m':
+                                i = 30
+                            elif event_data_list[5] == '3h':
+                                i = 180
+                            elif event_data_list[5] == '1d':
+                                i = 1440
+
+                            mod_vancouver_datetime = vancouver_datetime + timedelta(minutes=i)
                             datetime_string = event_data_list[2] + event_data_list[3]
                             datetime_object = datetime.strptime(datetime_string, '%m-%d-%Y %H:%M ')
 
@@ -127,7 +134,7 @@ def get_response(user_message, channel, events_dict): #function to select approp
                                 event_data_list.extend(when_to_remind_list)
                                 return event_data_list
                             else:
-                                return 'Sorry, your event date is either within 30 minutes of the current time or is in the past. Try again with a valid event date!'
+                                return 'Sorry, your event date is either within the scope of your scheduled reminder (30m/3h/1d) or it is in the past. Try again with a valid event date!'
                         else:
                             return 'Sorry, something went wrong in your event submission! Please correct the issue and try again.'
                     else:
