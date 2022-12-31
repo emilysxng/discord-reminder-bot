@@ -7,7 +7,7 @@ import asyncio
 #A channel called reminder-bot needs to exist in the server.
 
 async def run_discord_bot():
-    TOKEN = 'MTA1NjQyNzAwMTQ2MTg3ODg4NA.Ghsylr._YtpyB_FyC-NzHMw4uk7vV-2pvsatYcYTmru1E'
+    TOKEN = #put token here
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
@@ -55,7 +55,6 @@ async def run_discord_bot():
         mod_event_list = [event_data_list[2].strip(), event_data_list[3].strip(), event_data_list[4].strip(), channel_id, event_data_list[5].strip(), event_data_list[6], event_data_list[7], event_data_list[8]]
         event_name = event_data_list[1].strip()
         events_dict[event_name] = mod_event_list
-        print(events_dict) #TODO remove
 
     async def check_for_events(events_dict): #function called every minute to check if the current date & time match a scheduled one
         utc_datetime = datetime.now()

@@ -25,7 +25,7 @@ def get_response(user_message, channel, events_dict): #function to select approp
 
     elif lowercase_message == '!help':
         if channel == 'reminder-bot':
-            return "**All bot commands:** \n \n :blue_heart: `!surprise`: A surprise... \n :blue_heart: `!mood`: Rem's curent mood. \n :blue_heart: `!eventsubmit`: Submit a event to be reminded for! \n :blue_heart: `!eventlist`: List all events. \n :blue_heart: `!eventdelete`: Delete an event. \n :blue_heart: `!eventedit`: Edit an existing event. \n \n _**Note:** All event times should be given in PST, and you will recieve your event reminders in PST._ \n _**Note:** If you submit an event with the same name as a previously existing one, the existing event will be overwritten._"
+            return "**All bot commands:** \n \n :blue_heart: `!surprise`: A surprise... \n :blue_heart: `!mood`: Rem's curent mood. \n :blue_heart: `!eventsubmit`: Submit a event to be reminded for! \n :blue_heart: `!eventlist`: List all events. \n :blue_heart: `!eventdelete`: Delete an existing event. \n :blue_heart: `!eventedit`: Edit an existing event. \n \n _**Note:** All event times should be given in PST, and you will recieve your event reminders in PST._ \n _**Note:** If you submit an event with the same name as a previously existing one, the existing event will be overwritten._"
         else:
             return 'Wrong channel! Rem can help you in #reminder-bot.'
 
@@ -125,7 +125,6 @@ def get_response(user_message, channel, events_dict): #function to select approp
 
                                 when_to_remind_list = [thirty_min, three_hr, one_day]
                                 event_data_list.extend(when_to_remind_list)
-                                print(event_data_list) #TODO remove
                                 return event_data_list
                             else:
                                 return 'Sorry, your event date is either within 30 minutes of the current time or is in the past. Try again with a valid event date!'
