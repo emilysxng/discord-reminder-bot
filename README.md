@@ -9,6 +9,8 @@
 - **!surprise:** It's a surprise!
 
 *A channel called '#reminder-bot' must be existing in a server for the bot to have functionality, as it will process commands only in this channel.*
+
 *All event times must be in PST, and you will be reminded for events in PST.*
+
 *If an event is submitted with the same name as a previously existing one, the existing event will be overwritten.*
 
