@@ -1,5 +1,6 @@
 import discord
 import responses
+import config
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 import asyncio
@@ -7,7 +8,7 @@ import asyncio
 #A channel called reminder-bot needs to exist in the server.
 
 async def run_discord_bot():
-    TOKEN = 'MTA1NjQyNzAwMTQ2MTg3ODg4NA.Gef19O.ivx2Z8kxSc71wQXnxvzdRPlMf_l3dTYYjo3bDQ'
+    TOKEN = config.get_token() #Token here
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
