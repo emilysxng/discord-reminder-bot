@@ -17,7 +17,7 @@ async def run_discord_bot():
 
     @client.event
     async def on_ready(): #function that is called every time the bot comes online
-        bot_name = str(client.user).('#')[0]
+        bot_name = str(client.user).split('#')[0]
         print(f'{bot_name} is online!')
 
     @client.event
