@@ -9,32 +9,32 @@ def get_response(user_message, channel, events_dict): #function to select approp
         if channel == 'reminder-bot':
             return 'https://www.youtube.com/watch?v=GJ0mO8P37Eg&list=WL&index=13 ( ͡° ͜ʖ ͡°)'
         else:
-            return 'Wrong channel! Rem can help you in #reminder-bot.'
+            return ':x: Wrong channel! Rem can help you in #reminder-bot.'
 
     if lowercase_message == '!cursedmike':
         if channel == 'reminder-bot':
             return 'https://media.giphy.com/media/pVuABKLhxv5hk0bAHQ/giphy.gif'
         else:
-            return 'Wrong channel! Rem can help you in #reminder-bot.'
+            return ':x: Wrong channel! Rem can help you in #reminder-bot.'
 
     if lowercase_message == '!eventedit':
         if channel == 'reminder-bot':
             return ':pencil: To edit an event, submit a new event under the **same** event name with the updated information. _(Note: This means that you cannot have two events with the same exact name.)_'
         else:
-            return 'Wrong channel! Rem can help you in #reminder-bot.'
+            return ':x: Wrong channel! Rem can help you in #reminder-bot.'
 
     elif lowercase_message == '!help':
         if channel == 'reminder-bot':
             return "**All bot commands:** \n \n :blue_heart: `!surprise`: A surprise... \n :blue_heart: `!mood`: Rem's curent mood. \n :blue_heart: `!eventsubmit`: Submit a event to be reminded for! \n :blue_heart: `!eventlist`: List all events. \n :blue_heart: `!eventdelete`: Delete an existing event. \n :blue_heart: `!eventedit`: Edit an existing event. \n \n _**Note:** All event times should be given in PST, and you will recieve your event reminders in PST._ \n _**Note:** If you submit an event with the same name as a previously existing one, the existing event will be overwritten._"
         else:
-            return 'Wrong channel! Rem can help you in #reminder-bot.'
+            return ':x: Wrong channel! Rem can help you in #reminder-bot.'
 
     elif lowercase_message == '!eventlist':
         if channel == 'reminder-bot':
             event_name_list = list(events_dict.keys())
 
             if len(event_name_list) == 0:
-                return 'There are no scheduled events to list! Try !eventsubmit to submit one.'
+                return ':x: There are no scheduled events to list! Try !eventsubmit to submit one.'
 
             event_print = '**All events:** \n \n'
 
@@ -44,8 +44,9 @@ def get_response(user_message, channel, events_dict): #function to select approp
                 event_minute = this_value[1][3] + this_value[1][4]
                 am_or_pm = 'AM'
 
-                if int(event_hour) > 12:
-                    event_hour = str(int(event_hour) - 12)
+                if int(event_hour) >= 12:
+                    if int(event_hour) != 12:
+                        event_hour = str(int(event_hour) - 12)
                     am_or_pm = 'PM'
                 if event_hour == '00':
                     event_hour = '12'
@@ -59,13 +60,13 @@ def get_response(user_message, channel, events_dict): #function to select approp
 
             return event_print
         else:
-            return 'Wrong channel! Rem can help you in #reminder-bot.'
+            return ':x: Wrong channel! Rem can help you in #reminder-bot.'
 
     elif lowercase_message == '!eventdelete':
         if channel == 'reminder-bot':
             return '**To delete an event, return relevant information in the square brackets on one line.** \n \n :clipboard:  >eventdelete \n :label:  > [Name of Event] \n \n **Ex:**  `>eventdelete >Math Assignment #4`'
         else:
-            return 'Wrong channel! Rem can help you in #reminder-bot.'
+            return ':x: Wrong channel! Rem can help you in #reminder-bot.'
 
     elif lowercase_message == 'k':
         return 'k'
@@ -86,11 +87,11 @@ def get_response(user_message, channel, events_dict): #function to select approp
 
                     if counter == 1:
                         del events_dict[event_name]
-                        return 'Event deleted successfully!'
+                        return ':white_check_mark: Event deleted successfully!'
                     else:
-                        return 'This event name does not exist, try again! Maybe you spelled something wrong, or missed a capital letter...'
+                        return ':x: This event name does not exist, try again! Maybe you spelled something wrong, or missed a capital letter...'
                 else:
-                    return 'Sorry, something went wrong in your event deletion! Please correct the issue and try again.'
+                    return ':x: Sorry, something went wrong in your event deletion! Please correct the issue and try again.'
 
             elif len(event_data_list) == 6: #eventsubmit
                 time = event_data_list[3]
@@ -134,21 +135,21 @@ def get_response(user_message, channel, events_dict): #function to select approp
                                 event_data_list.extend(when_to_remind_list)
                                 return event_data_list
                             else:
-                                return 'Sorry, your event date is either within the scope of your scheduled reminder (30m/3h/1d) or it is in the past. Try again with a valid event date!'
+                                return ':x: Sorry, your event date is either within the scope of your scheduled reminder (30m/3h/1d) or it is in the past. Try again with a valid event date!'
                         else:
-                            return 'Sorry, something went wrong in your event submission! Please correct the issue and try again.'
+                            return ':x: Sorry, something went wrong in your event submission! Please correct the issue and try again.'
                     else:
-                        return 'Sorry, something went wrong in your event submission! Please correct the issue and try again.'
+                        return ':x: Sorry, something went wrong in your event submission! Please correct the issue and try again.'
                 else:
-                    return 'Sorry, something went wrong in your event submission! Please correct the issue and try again.'
+                    return ':x: Sorry, something went wrong in your event submission! Please correct the issue and try again.'
             else:
-                return 'Sorry, something went wrong in your event submission! Please correct the issue and try again.'
+                return ':x: Sorry, something went wrong in your event submission/deletion! Please correct the issue and try again.'
 
     elif lowercase_message == '!eventsubmit':
         if channel == 'reminder-bot':
             return "**To submit an event, return relevant information in the square brackets on one line.** \n \n :label:  > [Name of Event] \n :calendar:  > [Date of Event as MM-DD-YYYY] \n :alarm_clock:  > [Time of Event as 00:00 in 24h time, PST] \n :repeat:  > [Reapeating Weekly/Monthly/Yearly/None] \n :grey_question:  > [Remind 30m/3h/1d Before] \n \n **Ex:**  `>Christmas Day! >12-25-2023 >00:00 >yearly >30m`"
         else:
-            return 'Wrong channel! Rem can help you in #reminder-bot.'
+            return ':x: Wrong channel! Rem can help you in #reminder-bot.'
 
     elif lowercase_message == '!mood':
         if channel == 'reminder-bot':
@@ -168,10 +169,10 @@ def get_response(user_message, channel, events_dict): #function to select approp
             if mood == 6:
                 return 'Rem is feeling mischievous... ( ＾◡＾)っ✂╰⋃╯'
         else:
-            return 'Wrong channel! Rem can help you in #reminder-bot.'
+            return ':x: Wrong channel! Rem can help you in #reminder-bot.'
 
     elif channel == 'reminder-bot':
-        return "Sorry, Rem doesn't quite understand! Try !help for a list of commands."
+        return ":grey_question: Sorry, Rem doesn't quite understand! Try !help for a list of commands."
 
     return
 
@@ -185,9 +186,11 @@ def get_reminder(event_name, event_info): #function to select appropriate (sched
     event_minute = event_time[3] + event_time[4]
     am_or_pm = 'AM'
 
-    if int(event_hour) > 12:
-        event_hour = int(event_hour) - 12
+    if int(event_hour) >= 12:
+        if int(event_hour) != 12:
+            event_hour = int(event_hour) - 12
         am_or_pm = 'PM'
+
     if event_hour == '00':
         event_hour = '12'
 

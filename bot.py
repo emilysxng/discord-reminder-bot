@@ -7,7 +7,7 @@ import asyncio
 #A channel called reminder-bot needs to exist in the server.
 
 async def run_discord_bot():
-    TOKEN = #put token here
+    TOKEN = 'MTA1NjQyNzAwMTQ2MTg3ODg4NA.Gef19O.ivx2Z8kxSc71wQXnxvzdRPlMf_l3dTYYjo3bDQ'
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
@@ -16,7 +16,7 @@ async def run_discord_bot():
 
     @client.event
     async def on_ready(): #function that is called every time the bot comes online
-        bot_name = str(client.user).split('#')[0]
+        bot_name = str(client.user).('#')[0]
         print(f'{bot_name} is online!')
 
     @client.event
@@ -38,13 +38,15 @@ async def run_discord_bot():
 
         if type(bot_response) == list:
             await add_event(bot_response, message.channel.id)
+
             if bot_response[5].lower() == '30m':
                 when_remind = '30 minutes'
             elif bot_response[5].lower() == '3h':
                 when_remind = '3 hours'
             elif bot_response[5].lower() == '1d':
                 when_remind = '1 day'
-            success = f'Event successfully added! You will be REMinded {when_remind} before the event time.'
+
+            success = f':white_check_mark: Event successfully added! You will be REMinded {when_remind} before the event time.'
             await message.channel.send(success)
         elif bot_response == None:
             return
