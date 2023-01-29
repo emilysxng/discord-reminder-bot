@@ -7,15 +7,12 @@ def get_response(user_message, channel, events_dict): #function to select approp
 
     if lowercase_message == '!surprise':
         if channel == 'reminder-bot':
-            return 'https://www.youtube.com/watch?v=GJ0mO8P37Eg&list=WL&index=13 ( ͡° ͜ʖ ͡°)'
+            return 'https://www.youtube.com/watch?v=-RrgT7MfF34 ( ͡° ͜ʖ ͡°)'
         else:
             return ':x: Wrong channel! Rem can help you in #reminder-bot.'
 
     if lowercase_message == '!cursedmike':
-        if channel == 'reminder-bot':
-            return 'https://media.giphy.com/media/pVuABKLhxv5hk0bAHQ/giphy.gif'
-        else:
-            return ':x: Wrong channel! Rem can help you in #reminder-bot.'
+        return 'https://media.giphy.com/media/pVuABKLhxv5hk0bAHQ/giphy.gif'
 
     if lowercase_message == '!eventedit':
         if channel == 'reminder-bot':
